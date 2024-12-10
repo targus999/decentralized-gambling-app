@@ -1,66 +1,38 @@
-## Foundry
+# Blockchain Voting App
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A decentralized voting platform built on blockchain technology using Solidity. The app aims to replace traditional political elections by providing a transparent, secure, and tamper-proof voting system. Using smart contracts and the Ethereum blockchain, the app ensures that votes are anonymous, verifiable, and immutable.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Decentralized Voting**: No central authority controls the voting process, ensuring fairness and transparency.
+- **Smart Contract-based**: Voting logic is embedded into smart contracts, providing an automated and trustless system.
+- **Transparency**: All votes are recorded on the blockchain, allowing anyone to verify the results without compromising voter anonymity.
+- **Security**: Blockchain technology ensures that votes cannot be altered, preventing fraud and manipulation.
+- **Anonymous Voting**: Voters can cast their ballots privately, and no personal information is stored on the blockchain.
 
-## Documentation
+## Tech Stack
 
-https://book.getfoundry.sh/
+- **Solidity**: Smart contract development for Ethereum blockchain.
+- **Ethereum**: Public blockchain for deploying and interacting with the voting contract.
+- **Foundry**: Development framework for testing and deploying smart contracts.
+- **Forge**: Tool for smart contract compilation, deployment, and testing in Foundry.
+- **Ethers.js**: JavaScript library to interact with Ethereum blockchain from the front end.
+- **Metamask**: Browser extension for interacting with the Ethereum blockchain.
 
-## Usage
+## Installation
 
-### Build
+### Prerequisites
 
-```shell
-$ forge build
-```
+Before running the project, make sure you have the following installed:
 
-### Test
+- [Node.js](https://nodejs.org/) (v12.x or higher)
+- [Foundry](https://getfoundry.sh/) (install it by running `curl -L https://foundry.paradigm.xyz | bash`)
+- [Metamask](https://metamask.io/) (browser extension for interacting with the Ethereum blockchain)
 
-```shell
-$ forge test
-```
+### Setup Instructions
 
-### Format
+1. **Clone the repository**
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+   ```bash
+   git clone https://https:/github.com/targus999/voting-app.git
+   cd voting-app
