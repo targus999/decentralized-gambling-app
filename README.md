@@ -1,32 +1,42 @@
-# Blockchain Voting App
+# Decentralized Gambling App
 
-A decentralized voting platform built on blockchain technology using Solidity. The app aims to replace traditional political elections by providing a transparent, secure, and tamper-proof voting system. Using smart contracts and the Ethereum blockchain, the app ensures that votes are anonymous, verifiable, and immutable.
+A blockchain-based gambling platform leveraging Chainlink VRF (Verifiable Random Function) for secure, provably fair randomness. This decentralized application (dApp) ensures transparency, fairness, and security in all gambling activities by utilizing smart contracts and the Ethereum blockchain.
 
 ## Features
 
-- **Decentralized Voting**: No central authority controls the voting process, ensuring fairness and transparency.
-- **Smart Contract-based**: Voting logic is embedded into smart contracts, providing an automated and trustless system.
-- **Transparency**: All votes are recorded on the blockchain, allowing anyone to verify the results without compromising voter anonymity.
-- **Security**: Blockchain technology ensures that votes cannot be altered, preventing fraud and manipulation.
-- **Anonymous Voting**: Voters can cast their ballots privately, and no personal information is stored on the blockchain.
+- **Decentralized Gambling**: A trustless platform where no central authority controls the outcomes or funds.
+- **Provably Fair Randomness**: Outcomes are generated using Chainlink VRF, ensuring tamper-proof, cryptographically secure randomness.
+- **Smart Contract-based**: Game logic and payouts are managed through immutable smart contracts deployed on the Ethereum blockchain.
+- **Transparency**: All bets, outcomes, and payouts are recorded on-chain, allowing users to verify every transaction.
+- **Security**: Funds are securely locked in smart contracts, and payouts are automated, reducing the risk of fraud or mismanagement.
+- **Anonymity**: Users can participate without revealing personal information, ensuring privacy.
 
 ## Tech Stack
 
 - **Solidity**: Smart contract development for Ethereum blockchain.
-- **Ethereum**: Public blockchain for deploying and interacting with the voting contract.
+- **Ethereum**: Public blockchain for deploying and interacting with the gambling contracts.
+- **Chainlink VRF**: Verifiable Random Function for generating provably fair random numbers.
 - **Foundry**: Development framework for testing and deploying smart contracts.
-- **Forge**: Tool for smart contract compilation, deployment, and testing in Foundry.
-- **Ethers.js**: JavaScript library to interact with Ethereum blockchain from the front end.
-- **Metamask**: Browser extension for interacting with the Ethereum blockchain.
+- **Forge**: Tool for compiling, testing, and deploying contracts in Foundry.
+- **Ethers.js**: JavaScript library to interact with the Ethereum blockchain from the front end.
+- **Metamask**: Browser extension for managing Ethereum accounts and interacting with the blockchain.
+
+## Games
+
+The platform supports the following games, with more to be added in the future:
+
+1. **Dice Roll**: Players bet on the outcome of a dice roll.
+2. **Coin Flip**: A simple heads-or-tails game with fair odds.
+3. **Lottery**: A periodic lottery draw where participants buy tickets, and one lucky winner is selected.
 
 ## Installation
 
 ### Prerequisites
 
-Before running the project, make sure you have the following installed:
+Before running the project, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (v12.x or higher)
-- [Foundry](https://getfoundry.sh/) (install it by running `curl -L https://foundry.paradigm.xyz | bash`)
+- [Foundry](https://getfoundry.sh/) (install using `curl -L https://foundry.paradigm.xyz | bash`)
 - [Metamask](https://metamask.io/) (browser extension for interacting with the Ethereum blockchain)
 
 ### Setup Instructions
@@ -34,5 +44,5 @@ Before running the project, make sure you have the following installed:
 1. **Clone the repository**
 
    ```bash
-   git clone https://https:/github.com/targus999/voting-app.git
-   cd voting-app
+   git clone https://github.com/targus999/gambling-app.git
+   cd gambling-app
