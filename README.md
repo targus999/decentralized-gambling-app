@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Decentralized Gambling App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A blockchain-based gambling platform leveraging Chainlink VRF (Verifiable Random Function) for secure, provably fair randomness. This decentralized application (dApp) ensures transparency, fairness, and security in all gambling activities by utilizing smart contracts and the Ethereum blockchain.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Decentralized Gambling**: A trustless platform where no central authority controls the outcomes or funds.
+- **Provably Fair Randomness**: Outcomes are generated using Chainlink VRF, ensuring tamper-proof, cryptographically secure randomness.
+- **Smart Contract-based**: Game logic and payouts are managed through immutable smart contracts deployed on the Ethereum blockchain.
+- **Transparency**: All bets, outcomes, and payouts are recorded on-chain, allowing users to verify every transaction.
+- **Security**: Funds are securely locked in smart contracts, and payouts are automated, reducing the risk of fraud or mismanagement.
+- **Anonymity**: Users can participate without revealing personal information, ensuring privacy.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Solidity**: Smart contract development for Ethereum blockchain.
+- **Ethereum**: Public blockchain for deploying and interacting with the gambling contracts.
+- **Chainlink VRF**: Verifiable Random Function for generating provably fair random numbers.
+- **Foundry**: Development framework for testing and deploying smart contracts.
+- **Forge**: Tool for compiling, testing, and deploying contracts in Foundry.
+- **Ethers.js**: JavaScript library to interact with the Ethereum blockchain from the front end.
+- **Metamask**: Browser extension for managing Ethereum accounts and interacting with the blockchain.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Games
 
-### `npm test`
+The platform supports the following games, with more to be added in the future:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Dice Roll**: Players bet on the outcome of a dice roll.
+2. **Coin Flip**: A simple heads-or-tails game with fair odds.
+3. **Lottery**: A periodic lottery draw where participants buy tickets, and one lucky winner is selected.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Before running the project, ensure you have the following installed:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Node.js](https://nodejs.org/) (v12.x or higher)
+- [Foundry](https://getfoundry.sh/) (install using `curl -L https://foundry.paradigm.xyz | bash`)
+- [Metamask](https://metamask.io/) (browser extension for interacting with the Ethereum blockchain)
 
-### `npm run eject`
+### Setup Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone https://github.com/targus999/gambling-app.git
+   cd gambling-app
