@@ -12,6 +12,12 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  /* max-width: 1200px; Optional: Set a max width to prevent elements from stretching too wide */
+}
 
 .App-header {
   background-color: #282c34;
