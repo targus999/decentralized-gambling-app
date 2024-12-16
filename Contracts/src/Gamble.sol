@@ -11,6 +11,8 @@ contract Gamble {
     State public currentState;
     uint256 private immutable minimumBet;
 
+    event DiceRolled(address indexed player, uint256 bet, uint256 result);
+    event CoinFlipped(address indexed player, uint256 bet, uint256 result);
     event BetPlaced(
         address indexed player,
         uint256 bet,
@@ -22,11 +24,11 @@ contract Gamble {
     error Gamble__contract_is_busy();
     error Gamble__send_more_eth();
 
-    constructor(uint256 minBet) {
-        minimumBet = minBet;
+    constructor() {
+        minimumBet = 5e10;
     }
 
-    function rollDice(uint256 bet) external payable validRequest {
+    function rollDice(uint256 bet) external payable validRequest returns(uint256) {
         currentState = State.Dice_Rolling;
         emit BetPlaced(
             msg.sender,
@@ -40,10 +42,12 @@ contract Gamble {
         if (bet == randomNumber) {
             withdraw();
         }
+        emit DiceRolled(msg.sender, bet, randomNumber);
         currentState = State.Open;
+        return randomNumber;
     }
 
-    function flipCoin(uint256 bet) external payable validRequest {
+    function flipCoin(uint256 bet) external payable validRequest returns(uint256){
         currentState = State.Coin_Flipping;
         emit BetPlaced(
             msg.sender,
@@ -57,7 +61,9 @@ contract Gamble {
         if (bet == randomNumber) {
             withdraw();
         }
+        emit CoinFlipped(msg.sender, bet, randomNumber);
         currentState = State.Open;
+        return randomNumber;
     }
     function withdraw() private {
         (bool success, ) = msg.sender.call{value: address(this).balance}("");
@@ -65,7 +71,7 @@ contract Gamble {
     }
 
     modifier validRequest() {
-        if (msg.value >= minimumBet) {
+        if (msg.value < minimumBet) {
             revert Gamble__send_more_eth();
         }
         if (currentState != State.Open) {

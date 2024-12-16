@@ -1,26 +1,37 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Confetti from "react-confetti";
+import { checkWalletConnection ,flippingCoin} from "../../lib/walletConnections";
+import { toast } from "react-toastify";
 
 const CoinFlip = () => {
-  const [side, setSide] = useState("heads");
-  const [selectedSide, setSelectedSide] = useState("heads");
+  const [side, setSide] = useState("0");
+  const [selectedSide, setSelectedSide] = useState("0");
   const [isFlipping, setIsFlipping] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   const [showMortification, setShowMortification] = useState(false);
 
-  const flipCoin = () => {
+  const flipCoin =async () => {
+    const walletConnected =await checkWalletConnection();
+    if(!walletConnected){
+      console.log("Please connect your wallet!");
+      toast.error("Please connect to your cryptowallet!", {
+        toastId: 'walletConnectionError'
+      });
+      return;  
+    }
     setIsFlipping(true);
     setShowCelebration(false); // Hide confetti when flipping starts
 
-    // Simulate coin flip and resolve result
-    setTimeout(() => {
-      const result = Math.random() > 0.5 ? "heads" : "tails";
+   
+      const result = await flippingCoin(selectedSide);
+      // const result="0";
       setSide(result);
       setIsFlipping(false);
+      console.log(result, selectedSide);
 
       // Check if the flipped side matches the selected side
-      if (result === selectedSide) {
+      if (result == selectedSide) {
         setShowCelebration(true);
         setTimeout(() => setShowCelebration(false), 5000); // Show confetti if it matches
       }
@@ -28,7 +39,7 @@ const CoinFlip = () => {
         setShowMortification(true); // Show mortification
         setTimeout(() => setShowMortification(false), 2000);
       }
-    }, 2000); // Flip duration matches animation time
+    
   };
 
   const handleSelectChange = (event) => {
@@ -110,8 +121,9 @@ const CoinFlip = () => {
             rotateY: isFlipping ? [0, 360] : 0,
           }}
           transition={{
-            duration: isFlipping ? 2 : 0,
+            duration: isFlipping ? 1 : 0,
             ease: "easeInOut",
+            repeat: isFlipping ? Infinity : 0,
           }}
           style={styles.coin}
         >
@@ -124,7 +136,7 @@ const CoinFlip = () => {
                 exit={{ opacity: 0 }}
                 style={styles.text}
               >
-                {side.toUpperCase()}
+                {side==="0" ? "HEADS" : "TAILS"}
               </motion.div>
             )}
           </AnimatePresence>
@@ -137,8 +149,8 @@ const CoinFlip = () => {
         onChange={handleSelectChange}
         style={styles.dropdown}
       >
-        <option value="heads">Heads</option>
-        <option value="tails">Tails</option>
+        <option value="0">Heads</option>
+        <option value="1">Tails</option>
       </select>
 
       {/* Button to trigger the coin flip */}

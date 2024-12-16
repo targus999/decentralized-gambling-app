@@ -1,8 +1,17 @@
+import { useEffect } from 'react';
 import './App.css';
 import CoinFlip from './components/Coin/Coin';
 import DiceRoll3D from './components/Dice/Dice';
+import { connectWallet } from './lib/walletConnections';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function App() {
+  useEffect(() => {
+    document.title = "Decentralized Gambling App";
+    connectWallet();
+  })
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +27,18 @@ function App() {
       </p></h5>
         
       </header>
+      <ToastContainer 
+        position="top-center" // Set global position to middle top
+        autoClose={3000}      // Optional: Default auto-close duration
+        hideProgressBar={true} // Show the progress bar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" // Dark mode enabled
+      />
     </div>
   );
 }

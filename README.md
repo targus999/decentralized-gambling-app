@@ -27,7 +27,7 @@ The platform supports the following games, with more to be added in the future:
 
 1. **Dice Roll**: Players bet on the outcome of a dice roll.
 2. **Coin Flip**: A simple heads-or-tails game with fair odds.
-3. **Lottery**: A periodic lottery draw where participants buy tickets, and one lucky winner is selected.
+
 
 ## Installation
 
