@@ -5,14 +5,13 @@ import {VRFConsumerBaseV2Plus} from "@chainlink/contracts/src/v0.8/vrf/dev/VRFCo
 import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 
 contract Gamble is VRFConsumerBaseV2Plus {
-
     enum State {
         Open,
         Dice_Rolling,
         Coin_Flipping
     }
 
-    State private s_currentState;
+    State public s_currentState;
     address private s_currentPlayer;
     uint256 private s_currentBet;
 
@@ -23,15 +22,18 @@ contract Gamble is VRFConsumerBaseV2Plus {
     uint32 private constant GAS_LIMIT = 40000;
     uint16 private constant REQUEST_CONFIRMATIONS = 3;
     uint32 private constant NUMWORDS = 1;
-    uint256 private constant MIN_BET=5e10;
+    uint256 private constant MIN_BET = 5e10;
+    address private constant VRF_ADDRESS = 0x83F9AfA1bF349FB717eFcf6A8DC310F79d6aA598;
+
+    
 
     event DiceRolled(address indexed player, uint256 bet, uint256 result);
     event CoinFlipped(address indexed player, uint256 bet, uint256 result);
-   
+
     error Gamble__contract_is_busy();
     error Gamble__send_more_eth();
 
-    constructor(address linkAddress) VRFConsumerBaseV2Plus(linkAddress) {}
+    constructor() VRFConsumerBaseV2Plus(VRF_ADDRESS) {}
 
     function fulfillRandomWords(
         uint256 requestId,
@@ -57,14 +59,10 @@ contract Gamble is VRFConsumerBaseV2Plus {
         s_currentState = State.Open;
     }
 
-    function placeBet(
-        State gameType,
-        uint256 bet
-    ) private  {
+    function placeBet(State gameType, uint256 bet) private {
         s_currentState = gameType;
         s_currentPlayer = msg.sender;
         s_currentBet = bet;
-
 
         // VRF Call
         uint256 requestId = requestRandomWords();
@@ -85,7 +83,7 @@ contract Gamble is VRFConsumerBaseV2Plus {
         require(success, "Withdrawal failed");
     }
 
-    function requestRandomWords() private returns (uint256) {
+    function requestRandomWords() internal returns (uint256) {
         return
             s_vrfCoordinator.requestRandomWords(
                 VRFV2PlusClient.RandomWordsRequest({
